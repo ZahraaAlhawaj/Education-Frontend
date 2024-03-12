@@ -1,11 +1,16 @@
 <script>
 import axios from "axios"
 const API = import.meta.env.VITE_UNIHUB_API
+import courseWork from './courseWork.vue'
 export default {
   name: "Courses",
+  components:{
+courseWork,
+  },
   data: () => ({
     courses: [],
-    facultyId: "65f0265d9b596775d3720a6e", //user id getting from the localstorage
+    facultyId: "65f0265d9b596775d3720a6e",
+    selectedCodeId: null //user id getting from the localstorage
   }),
   mounted() {
     // get the courses when the first page open up
@@ -17,12 +22,17 @@ export default {
       this.courses = res.data
       console.log(res.data)
     },
+    async viewCourseWork(id){
+      console.log("Navigating to CourseWork with courseId:", id);
+      const url = `/course/${id}`;
+      // Navigate to the URL
+      window.location.href = url;
+    }
   },
 }
 </script>
 <template>
-  <!-- <p>{{ courses }}</p> -->
-  <table :key="courses.courses.id" v-for="cours in courses.courses">
+  <v-data-table >
     <tr>
       <th>Name</th>
       <th>Code</th>
@@ -32,15 +42,16 @@ export default {
       <th>Building</th>
       <th>View Details</th>
     </tr>
-    <tr>
+    <tr :key="courses.courses.id" v-for="cours in courses.courses">
       <th>{{ cours.name }}</th>
       <th>{{ cours.code }}</th>
       <th>{{ cours.students.length }}</th>
       <th>{{ cours.timing }}</th>
       <th>{{ cours.room }}</th>
       <th>{{ cours.building }}</th>
-      <th><a href="#">Detatils</a></th>
+      <th><a href="#" @click="viewCourseWork(cours._id)">Detatils</a></th>
+      <!-- <courseWork courseId="cours._id"/> -->
     </tr>
-  </table>
+  </v-data-table>
 </template>
 <style></style>
