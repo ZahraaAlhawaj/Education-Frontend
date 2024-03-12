@@ -13,17 +13,17 @@ export default {
 
 <style>
 .router-link-exact-active {
-  color: #fff;
+  color: #adadad;
 }
 
 nav {
-  background: #42b983;
+  background: #c92519;
   padding: 1em;
 }
 
 nav a {
   margin: 1em;
-  color: #2c3e50;
+  color: #ffffff;
   text-decoration: none;
   font-weight: 800;
 }
