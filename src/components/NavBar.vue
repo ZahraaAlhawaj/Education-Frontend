@@ -1,13 +1,47 @@
 <script>
 export default {
-  name: 'NavBar'
+  name: 'NavBar',
+  data() {
+    return {
+      userType: localStorage.getItem('userType') || null
+    }
+  },
+  watch: {
+    userType(newType) {
+      console.log('User type changed:', newType)
+    }
+  },
+  mounted() {
+    window.addEventListener('storage', this.handleStorageChange)
+  },
+  beforeDestroy() {
+    window.removeEventListener('storage', this.handleStorageChange)
+  },
+  methods: {
+    handleStorageChange(event) {
+      if (event.key === 'userType') {
+        this.userType = event.newValue
+      }
+    }
+  }
 }
 </script>
 
 <template>
   <nav>
-    <router-link to="/" name="HomePage">Home</router-link>
-    <router-link to="/signIn">Sign In</router-link>
+    <section v-if="userType && userType == 'admin'">
+      <router-link to="/" name="HomePage">Home</router-link>
+      <router-link to="/adminCourses" name="AdminCourses">Courses</router-link>
+      <router-link to="/adminPlans" name="AdminPlans"
+        >Academic Plans</router-link
+      >
+      <router-link to="/adminStudents" name="AdminStudents"
+        >Students</router-link
+      >
+      <router-link to="/adminFaculty" name="AdminFaculty">Faculty</router-link>
+
+      <router-link to="/signIn">Sign In</router-link>
+    </section>
   </nav>
 </template>
 
