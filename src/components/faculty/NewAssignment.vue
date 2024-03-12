@@ -17,18 +17,33 @@ export default {
   mounted() {
     this.courseId = this.$route.params.id
     this.getCourseWork(this.courseId)
+    
   },
   methods: {
     async getCourseWork(id) {
       console.log("Received course ID:", id)
+      const getCollegeName = await axios.get(`${API}/plan`)
+      console.log(getCollegeName.data)
+      for(let i=0; i < getCollegeName.data.length;i++){
+        
+      if(getCollegeName.data[i].courses.includes(id)){
+      this.college = getCollegeName.data[i].collage
+      break
+      }
+      }
+      console.log(this.college)
     },
     async addAssignment() {
+      // const getCollegeName = await axios.get(`${API}/plan`)
+      // console.log(getCollegeName.data)
+      // this.college = getCollegeName.data
+
       const assignmentToAdd = {
         courseId: this.courseId,
         type: this.formData.type,
         weight: this.formData.weight,
         question: this.formData.question,
-        // college: this.college // You can set college if you have it available
+        college: this.college 
       }
 
       try {
