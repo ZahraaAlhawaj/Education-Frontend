@@ -31,7 +31,7 @@ export default {
       if(res.data[i].courseId.includes(id)){
       this.courseWorkData.push(res.data[i]);
       }}
-// console.log(this.courseWorkData)
+console.log(this.courseWorkData)
 
       
       console.log("Received course ID:", id);
@@ -39,6 +39,11 @@ export default {
     },
     async addNewAssignment(id){
       const url = `/${id}`;
+      // Navigate to the URL
+      window.location.href = url;
+    },
+    async viewStudentSubs(id){
+      const url = `/studentSubmitions/${id}`;
       // Navigate to the URL
       window.location.href = url;
     }
@@ -54,7 +59,7 @@ export default {
    
     <tr  v-for="cours in courseWorkData">
       <th>{{ cours.type }}</th>
-     <th><button>View Student Submition</button></th>
+     <th><button @click="viewStudentSubs(cours._id)">View Student Submition</button></th>
     </tr>
   </v-data-table>
     <!-- <p>
