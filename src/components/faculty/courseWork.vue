@@ -7,7 +7,7 @@ export default {
   
   data() {
     return {
-      courseId: null,
+      courseId: null, //maybe save it in local storage?
       course:[],
       courseWorkData: []
     };
@@ -37,6 +37,11 @@ export default {
       console.log("Received course ID:", id);
       // console.log(res.data)
     },
+    async addNewAssignment(id){
+      const url = `/${id}`;
+      // Navigate to the URL
+      window.location.href = url;
+    }
   },
 };
 </script>
@@ -44,7 +49,7 @@ export default {
 <template>
   <div>
     <h1>{{ course.name }}</h1>
-    <button>Add New Assignment</button>
+    <button @click="addNewAssignment(course._id)">Add New Assignment</button>
     <v-data-table >
    
     <tr  v-for="cours in courseWorkData">
