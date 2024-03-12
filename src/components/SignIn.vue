@@ -21,11 +21,6 @@ export default {
     console.log(this.userType)
   },
   methods: {
-    getUserType() {
-      this.userType = this.$route.params.userType
-      console.log(this.userType)
-      return this.userType
-    },
     async signIn() {
       const response = await axios.post(`${BASE_URL}/auth/login`, {
         email: this.email,
