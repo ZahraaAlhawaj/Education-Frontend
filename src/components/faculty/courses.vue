@@ -10,10 +10,9 @@ courseWork,
   data: () => ({
     courses: [],
     facultyId: "65f0265d9b596775d3720a6e",
-    selectedCodeId: null //user id getting from the localstorage
+    selectedCodeId: null
   }),
   mounted() {
-    // get the courses when the first page open up
     this.getFacultyMemberCourses("65f0265d9b596775d3720a6e")
   },
   methods: {
@@ -50,7 +49,6 @@ courseWork,
       <th>{{ cours.room }}</th>
       <th>{{ cours.building }}</th>
       <th><a href="#" @click="viewCourseWork(cours._id)">Detatils</a></th>
-      <!-- <courseWork courseId="cours._id"/> -->
     </tr>
   </v-data-table>
 </template>

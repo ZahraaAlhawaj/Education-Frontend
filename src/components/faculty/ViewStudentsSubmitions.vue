@@ -21,7 +21,7 @@ export default {
       try {
         const courseInfo = await axios.get(`${API}/courseWork/${id}`)
         this.courseWorkData = courseInfo.data
-        console.log(this.courseWorkData)
+
         console.log("Received course ID:", id)
 
         const sub = await axios.get(`${API}/submition`)
@@ -34,7 +34,6 @@ export default {
             this.submitions.push(submissionDetails)
           }
         }
-        console.log(this.submitions)
       } catch (error) {
         console.error("Error fetching course work:", error)
       }
@@ -49,9 +48,7 @@ export default {
       }
     },
     async goToStudentSubmition(id, stuName, AName, Ques) {
-      // :id/:StuName/:AName/:Ques
       const url = `/ViewStudentSubmition/${id}/${stuName}/${AName}/${Ques}`
-      // Navigate to the URL
       window.location.href = url
     },
   },
@@ -67,30 +64,29 @@ export default {
       <th>Grade Submission</th>
       <th>Score</th>
     </tr>
-    <!-- :key="courses.courses.id" v-for="cours in courses.courses" -->
+
     <tr v-for="sub in submitions" :key="sub._id">
-  <th v-if="sub.studentId && sub.studentId.length > 0">
-    {{ sub.studentId.map(student => student.name).join(', ') }}
-  </th>
-  <th>
-    <button 
-      @click="
-        goToStudentSubmition(
-          sub._id,
-          sub.studentId && sub.studentId.length > 0 ? sub.studentId.map(student => student.name).join(', ') : 'N/A',
-          courseWorkData.type,
-          sub.courseWorkId[0].question
-        )
-      "
-    >
-      View Submition
-    </button>
-  </th>
-  <th>{{ sub.grade }}/{{ courseWorkData.weight }}</th>
-</tr>
-
+      <th v-if="sub.studentId && sub.studentId.length > 0">
+        {{ sub.studentId.map((student) => student.name).join(", ") }}
+      </th>
+      <th>
+        <button
+          @click="
+            goToStudentSubmition(
+              sub._id,
+              sub.studentId && sub.studentId.length > 0
+                ? sub.studentId.map((student) => student.name).join(', ')
+                : 'N/A',
+              courseWorkData.type,
+              sub.courseWorkId[0].question
+            )
+          "
+        >
+          View Submition
+        </button>
+      </th>
+      <th>{{ sub.grade }}/{{ courseWorkData.weight }}</th>
+    </tr>
   </v-data-table>
-
-  <!-- {{ assignmentId }} -->
 </template>
 <style></style>

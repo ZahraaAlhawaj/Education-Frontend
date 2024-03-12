@@ -12,6 +12,7 @@ export default {
       AName: null,
       Ques: null,
       stuName: null,
+      gradeInput: null,
     }
   },
 
@@ -20,19 +21,27 @@ export default {
     this.AName = this.$route.params.AName
     this.Ques = this.$route.params.Ques
     this.stuName = this.$route.params.StuName
-    console.log(this.stuName)
     this.getCourseWork(this.assignmentId)
   },
 
   methods: {
     async getCourseWork(id) {
       try {
-        // Fetch submission details for the given assignment ID
         const response = await axios.get(`${API}/submition/${id}`)
         this.submissionDetails = response.data
-        console.log(this.submissionDetails)
       } catch (error) {
         console.error("Error fetching submission details:", error)
+      }
+    },
+    async updateGrade(subID) {
+      try {
+        const res = await axios.put(`${API}/submition/${subID}`, {
+          grade: this.gradeInput,
+        })
+        alert("Grade added")
+        this.gradeInput = null
+      } catch (error) {
+        console.error("Error updating grade:", error)
       }
     },
   },
@@ -41,19 +50,29 @@ export default {
 
 <template>
   <div>
-    <h1>{{ AName }} - {{ stuName }}</h1>
-    <div v-if="submissionDetails">
-      <p>Question: {{ Ques }}</p>
-      <p>Answer: {{ submissionDetails.answer }}</p>
-      <p>Grade: {{ submissionDetails.grade }} / {{ submissionDetails.courseWorkId[0].weight }}</p>
-      <!-- Add more fields to display other submission details -->
-    </div>
-    <div v-else>
-      <p>Loading...</p>
-    </div>
+    <form @submit.prevent="updateGrade(submissionDetails._id)">
+      <h1>{{ AName }} - {{ stuName }}</h1>
+      <div v-if="submissionDetails">
+        <p>Question: {{ Ques }}</p>
+        <p>Answer: {{ submissionDetails.answer }}</p>
+        <p>
+          Grade:
+          <input
+            v-model.number="gradeInput"
+            type="number"
+            :placeholder="submissionDetails.grade"
+            :min="0"
+            :max="submissionDetails.courseWorkId[0].weight"
+          />
+          / {{ submissionDetails.courseWorkId[0].weight }}
+        </p>
+        <button type="submit">Add Grade</button>
+      </div>
+      <div v-else>
+        <p>Loading...</p>
+      </div>
+    </form>
   </div>
 </template>
 
-<style>
-/* Add your styles here if needed */
-</style>
+<style></style>
