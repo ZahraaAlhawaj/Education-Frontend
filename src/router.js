@@ -40,7 +40,7 @@ const routes = [
   { path: '/courseDetails/:course_id', component: CourseDetails },
   { path: '/courseWorkDetails/:courseWork_id', component: CourseWorkDetails },
   { path: '/studentReport', component: StudentReport }
-
+,
 {
     path: '/registerStudent',
     component: RegisterStudent,
