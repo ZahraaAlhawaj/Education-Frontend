@@ -67,20 +67,28 @@ export default {
 }
 </script>
 <template>
-  <h1>New Assignment</h1>
-  <form @submit.prevent="submitForm">
-    <input v-model="formData.type" placeholder="Name" name="type" />
+  <section class="mt-16">
+    <v-card class="mx-auto pa-10" max-width="700">
+  <p class="text-h4 mb-10 text-md-center">New Assignment</p>
+  <v-form @submit.prevent="submitForm">
+    <v-text-field v-model="formData.type" placeholder="Name" name="type" />
     <br /><br />
-    <textarea v-model="formData.question" placeholder="Task" name="question" />
+    <v-text-field v-model="formData.question" placeholder="Task" name="question" />
     <br /><br />
-    <input
+    <v-text-field
       v-model.number="formData.weight"
       placeholder="Weight"
       type="number"
       name="weight"
     />
     <br /><br />
-    <button type="submit">Add To Course</button>
-  </form>
+    <v-btn  color="red-darken-4"
+          rounded="xl"
+          size="x-large"
+          class="mt-2 mb-8"
+          block type="submit">Add To Course</v-btn>
+  </v-form>
+  </v-card>
+  </section>
 </template>
 <style></style>

@@ -31,25 +31,35 @@ courseWork,
 }
 </script>
 <template>
-  <v-data-table >
-    <tr>
-      <th>Name</th>
-      <th>Code</th>
-      <th>Numner of students</th>
-      <th>Timing</th>
-      <th>Room</th>
-      <th>Building</th>
-      <th>View Details</th>
+ <v-table> 
+  <thead>
+
+  <tr>
+      <th class="text-left">Name</th>
+      <th class="text-left">Code</th>
+      <th class="text-left">Numner of students</th>
+      <th class="text-left">Timing</th>
+      <th class="text-left">Room</th>
+      <th class="text-left">Building</th>
+      <th class="text-left">View Details</th>
     </tr>
+  </thead>
+  <tbody>
     <tr :key="courses.courses.id" v-for="cours in courses.courses">
-      <th>{{ cours.name }}</th>
-      <th>{{ cours.code }}</th>
-      <th>{{ cours.students.length }}</th>
-      <th>{{ cours.timing }}</th>
-      <th>{{ cours.room }}</th>
-      <th>{{ cours.building }}</th>
-      <th><a href="#" @click="viewCourseWork(cours._id)">Detatils</a></th>
+      <td>{{ cours.name }}</td>
+      <td>{{ cours.code }}</td>
+      <td>{{ cours.students.length }}</td>
+      <td>{{ cours.timing }}</td>
+      <td>{{ cours.room }}</td>
+      <td>{{ cours.building }}</td>
+      <td><v-btn variant="tonal"  @click="viewCourseWork(cours._id)">Details</v-btn></td>
     </tr>
-  </v-data-table>
+  </tbody>
+  </v-table>
 </template>
-<style></style>
+<style>
+button{
+  color: blue;
+}
+
+</style>
