@@ -14,6 +14,11 @@ UOGA boasts state-of-the-art facilities, laboratories, and technology to ensure 
 Global Community
 Join a diverse community of students from around the world, fostering a rich multicultural experience and preparing you for success in a globalized world.
 
+## Project Links:
+
+Project GitHub Link Frontend - [https://github.com/ZahraaAlhawaj/Education-Frontend](https://github.com/ZahraaAlhawaj/Education-Frontend)
+Project GitHub Link Backend - [https://github.com/ZahraaAlhawaj/Education](https://github.com/ZahraaAlhawaj/Education)
+
 ## 🔗 Live Link:
 
 Click the following link to be redirected to the live version of the code. [UniHub]()
@@ -46,5 +51,3 @@ Zahraa- [GitHub](https://github.com/ZahraaAlhawaj)
 Yasmeen - [GitHub](https://github.com/yomalbalooshi)
 Fatima - [GitHub](https://github.com/fsky99)
 
-Project GitHub Link Frontend - [https://github.com/ZahraaAlhawaj/Education-Frontend](https://github.com/ZahraaAlhawaj/Education-Frontend)
-Project GitHub Link Backend - [https://github.com/ZahraaAlhawaj/Education](https://github.com/ZahraaAlhawaj/Education)
