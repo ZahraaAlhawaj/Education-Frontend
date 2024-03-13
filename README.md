@@ -16,8 +16,8 @@ Join a diverse community of students from around the world, fostering a rich mul
 
 ## Project Links:
 
-Project GitHub Link Frontend - [https://github.com/ZahraaAlhawaj/Education-Frontend](https://github.com/ZahraaAlhawaj/Education-Frontend)
-Project GitHub Link Backend - [https://github.com/ZahraaAlhawaj/Education](https://github.com/ZahraaAlhawaj/Education)
+- Project GitHub Link Frontend - [https://github.com/ZahraaAlhawaj/Education-Frontend](https://github.com/ZahraaAlhawaj/Education-Frontend)
+- Project GitHub Link Backend - [https://github.com/ZahraaAlhawaj/Education](https://github.com/ZahraaAlhawaj/Education)
 
 ## 🔗 Live Link:
 
