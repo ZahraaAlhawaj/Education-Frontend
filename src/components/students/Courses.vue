@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     async getCourses() {
-      const stu = '65f026a5302b0ed08c2617c5'
+      const stu = localStorage.getItem("userId")
       const response = await axios.get(`${API_KEY}/student/${stu}`)
       this.courses = response.data.courses
 
@@ -44,7 +44,7 @@ export default {
 
     async getGrade(id) {
       let cGrade = 0
-      let stuId = '65f026a5302b0ed08c2617c5'
+      let stuId = localStorage.getItem("userId")
       const res = await axios.get(`${API_KEY}/courseWork`)
       this.allCourseWork = res.data
 

@@ -31,7 +31,7 @@ export default {
     async submitWork() {
       //create submittion
       event.preventDefault()
-      const stu = '65f026a5302b0ed08c2617c5'
+      const stu = localStorage.getItem("userId")
       const res = await axios.post(`${API_KEY}/submition`, {
         answer: this.answerText,
         courseWorkId: this.CourseWorkDetails._id,
