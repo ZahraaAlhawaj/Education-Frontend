@@ -6,6 +6,7 @@ import AdminCourses from './components/admin/AdminCourses.vue'
 import AdminPlans from './components/admin/AdminPlans.vue'
 import AdminStudents from './components/admin/AdminStudents.vue'
 import AdminFaculty from './components/admin/AdminFaculty.vue'
+import AddCourseForm from './components/admin/AddCourseForm.vue'
 // ADD YOUR PATHS HERE
 
 const routes = [
@@ -35,6 +36,11 @@ const routes = [
     path: '/adminStudents',
     component: AdminStudents,
     name: 'AdminStudents'
+  },
+  {
+    path: '/addcourseform',
+    component: AddCourseForm,
+    name: 'AddCourseForm'
   }
 ]
 
