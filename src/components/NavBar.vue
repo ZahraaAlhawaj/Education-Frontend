@@ -46,6 +46,14 @@ export default {
       <router-link to="/" name="HomePage">Home</router-link>
       <router-link to="/signOut">Sign Out</router-link>
     </section>
+    <section v-else-if="userType === 'student'">
+      <router-link to="/courses" >courses</router-link>
+      <router-link to="/registerCourse" >Registered Courses</router-link>
+      <router-link to="/studentReport" >Student Reports</router-link>
+      
+
+      <router-link to="/signOut">Sign Out</router-link>
+    </section>
     <section v-else>
       <router-link to="/signIn">Sign In</router-link>
     </section>

@@ -28,13 +28,13 @@ export default {
       this.fetchDetails()
     },
     fetchDetails() {
-      const stu = '65f026a5302b0ed08c2617c5'
+      const stu = localStorage.getItem("userId")
       this.reportDetails = this.reports.filter(
         (reports) => reports.student._id == stu
       )
     },
     async getStudentGPA() {
-      const stu = '65f026a5302b0ed08c2617c5'
+      const stu = localStorage.getItem("userId")
       const res = await axios.get(`${API_KEY}/student/${stu}`)
       this.GPA = res.data.GPA
     },

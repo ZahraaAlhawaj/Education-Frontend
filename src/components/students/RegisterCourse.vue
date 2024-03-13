@@ -27,7 +27,7 @@ export default {
       this.courses = response.data
     },
     async registerCourse(id) {
-      const stu = '65f026a5302b0ed08c2617c5'
+      const stu = localStorage.getItem("userId")
       const userDetails = await axios.get(`${API_KEY}/student/${stu}`)
       const stuId = { ...userDetails.data }
       stuId.courses.push(id)
