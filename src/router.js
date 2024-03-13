@@ -80,7 +80,21 @@ const routes = [
     path: '/addcoursetofacultyform/:faculty_id',
     component: AddCourseToFacultyForm,
     name: 'AddCourseToFacultyForm`'
-  }
+  },
+  { path: "/course/:id", component: courseWork, name: "courseWork" },
+{ path: "/:id", component: NewAssignment, name: "newAssignment" },
+{
+  path: "/studentSubmitions/:id",
+  component: studentSubmitions,
+  name: "studentSubmitions",
+},
+{
+path:"/ViewStudentSubmition/:id/:StuName/:AName/:Ques",
+component : ViewStudentSubmition,
+name:"ViewStudentSubmition",
+},
+{ path: '/signOut', component: SignOut, name: 'SignOut' },
+
 ]
 
 const router = createRouter({
