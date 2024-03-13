@@ -1,4 +1,4 @@
-<!-- <script>
+<script>
 import axios from 'axios'
 import { RouterLink } from 'vue-router'
 const BASE_URL = import.meta.env.VITE_UNIHUB_API
@@ -7,21 +7,19 @@ export default {
   data: function () {
     return {
       plan: {},
-      name: '',
-      code: '',
-      credit: 0,
-      timing: '',
-      days: '',
-      room: '',
-      building: '',
-      prerequisite: ''
+      type: '',
+      major: '',
+      department: '',
+      collage: ''
     }
   },
   methods: {
-    async AddCourse() {
-      this.plan.name = this.name
-      this.plan.code = this.code
-      const response = await axios.post(`${BASE_URL}/plans/`, this.plan)
+    async AddPlan() {
+      this.plan.type = this.type
+      this.plan.department = this.department
+      this.plan.major = this.major
+      this.plan.collage = this.collage
+      const response = await axios.post(`${BASE_URL}/plan/`, this.plan)
       console.log(response.data)
       this.$router.push('/adminPlans')
     }
@@ -31,72 +29,41 @@ export default {
 <template>
   <section class="mt-16">
     <v-card class="mx-auto pa-10" max-width="700">
-      <p class="text-h4 mb-10 text-md-center">Add Course</p>
+      <p class="text-h4 mb-10 text-md-center">Add Academic Plan</p>
       <v-form @submit.prevent>
         <v-text-field
           class="mb-8"
-          label="Name"
+          label="Type"
           variant="outlined"
           type="text"
           :rules="rules"
-          v-model="name"
+          v-model="type"
         ></v-text-field>
         <v-text-field
           class="mb-8"
-          label="Code"
+          label="Major"
           variant="outlined"
           type="text"
           :rules="rules"
-          v-model="code"
+          v-model="major"
         ></v-text-field>
         <v-text-field
           class="mb-8"
-          label="Credit"
-          variant="outlined"
-          type="number"
-          :rules="rules"
-          v-model="credit"
-        ></v-text-field>
-        <v-text-field
-          class="mb-8"
-          label="Timing"
+          label="Department"
           variant="outlined"
           type="text"
           :rules="rules"
-          v-model="timing"
+          v-model="department"
         ></v-text-field>
         <v-text-field
           class="mb-8"
-          label="Days"
+          label="College"
           variant="outlined"
           type="text"
           :rules="rules"
-          v-model="days"
+          v-model="collage"
         ></v-text-field>
-        <v-text-field
-          class="mb-8"
-          label="Room"
-          variant="outlined"
-          type="text"
-          :rules="rules"
-          v-model="room"
-        ></v-text-field>
-        <v-text-field
-          class="mb-8"
-          label="Building"
-          variant="outlined"
-          type="text"
-          :rules="rules"
-          v-model="building"
-        ></v-text-field>
-        <v-text-field
-          class="mb-8"
-          label="Prerequisite"
-          variant="outlined"
-          type="text"
-          :rules="rules"
-          v-model="prerequisite"
-        ></v-text-field>
+
         <v-btn
           type="submit"
           color="red-darken-4"
@@ -104,11 +71,11 @@ export default {
           size="x-large"
           class="mt-2 mb-8"
           block
-          @click="AddCourse()"
+          @click="AddPlan()"
         >
           Add Course
         </v-btn>
       </v-form>
     </v-card>
   </section>
-</template> -->
+</template>

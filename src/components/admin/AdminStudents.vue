@@ -17,6 +17,9 @@ export default {
 <template>
   <section>
     <h1>All Students Registered in UOGA</h1>
+    <router-link to="/addstudentform" name="AddStudentForm"
+      >Add a student</router-link
+    >
     <v-table>
       <thead>
         <tr>
