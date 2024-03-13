@@ -44,18 +44,34 @@ export default {
 <template>
   <div>
     <h1>{{ course.name }}</h1>
-    <button @click="addNewAssignment(course._id)">Add New Assignment</button>
-    <v-data-table>
+    <v-btn variant="tonal" @click="addNewAssignment(course._id)">Add New Assignment</v-btn>
+    <v-table> 
+      <thead>
+<tr>
+  <th class="text-left"> 
+    Assignment Name
+  </th>
+  <th class="text-left">
+    students work
+  </th>
+</tr>
+
+        </thead>
+        <tbody>
       <tr v-for="cours in courseWorkData">
-        <th>{{ cours.type }}</th>
-        <th>
-          <button @click="viewStudentSubs(cours._id)">
+        <td>{{ cours.type }}</td>
+        <td>
+          <v-btn variant="tonal" @click="viewStudentSubs(cours._id)">
             View Student Submition
-          </button>
-        </th>
+          </v-btn>
+        </td>
       </tr>
-    </v-data-table>
+    </tbody>
+    </v-table>
   </div>
 </template>
 
-<style></style>
+<style>
+button{
+  color: blue;
+}</style>
