@@ -18,6 +18,9 @@ import ViewStudentSubmition from './components/faculty/ViewStudentSubmition.vue'
 import AddFacultyForm from './components/admin/AddFacultyForm.vue'
 
 import SignOut from './components/signout.vue'
+
+import ViewFacultyMember from './components/admin/ViewFacultyMember.vue'
+import AddCourseToFacultyForm from './components/admin/AddCourseToFacultyForm.vue'
 // ADD YOUR PATHS HERE
 const routes = [
   { path: '/', component: HomePage, name: 'HomePage' },
@@ -53,11 +56,31 @@ const routes = [
     name: 'AddCourseForm'
   },
   {
+    path: '/addacademicplanform',
+    component: AddAcademicPlanForm,
+    name: 'AddAcademicPlanForm'
+  },
+  {
+    path: '/addstudentform',
+    component: AddStudentForm,
+    name: 'AddStudentForm'
+  },
+  {
     path: '/addfacultyform',
     component: AddFacultyForm,
     name: 'AddFacultyForm'
   },
-  { path: '/signOut', component: SignOut, name: 'SignOut' }
+  { path: '/signOut', component: SignOut, name: 'SignOut' },
+  {
+    path: '/adminFaculty/:faculty_id',
+    component: ViewFacultyMember,
+    name: 'ViewFacultyMember'
+  },
+  {
+    path: '/addcoursetofacultyform/:faculty_id',
+    component: AddCourseToFacultyForm,
+    name: 'AddCourseToFacultyForm`'
+  }
 ]
 
 const router = createRouter({
