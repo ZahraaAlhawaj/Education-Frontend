@@ -44,23 +44,36 @@ export default {
           grade: this.gradeInput,
         })
 
-        const studentReport = this.reports.find(
-          (report) => report.student === this.submissionDetails.studentId[0]._id
+        const allSubmissionsResponse = await axios.get(`${API}/submition`)
+        const allSubmissions = allSubmissionsResponse.data
+
+        const studentSubmissions = allSubmissions.filter((submission) =>
+          submission.studentId.some(
+            (id) => id === this.submissionDetails.studentId[0]._id
+          )
         )
 
-        if (studentReport) {
-          studentReport.submittions.push(subID)
-
-          await axios.put(`${API}/report/${studentReport._id}`, {
-            submittions: studentReport.submittions,
-          })
-
-          await this.refreshReports()
-
-          alert("Grade added")
-        } else {
-          console.error("Student report not found")
+        let totalGrade = 0
+        for (const submission of studentSubmissions) {
+          totalGrade += submission.grade || 0
         }
+        const newGPA =
+          studentSubmissions.length > 0
+            ? totalGrade / studentSubmissions.length
+            : 0
+
+        const updatedGPA = Math.min(newGPA, 4)
+
+        await axios.put(
+          `${API}/student/${this.submissionDetails.studentId[0]._id}`,
+          {
+            GPA: updatedGPA,
+          }
+        )
+
+        await this.refreshReports()
+
+        alert("Grade added")
 
         this.gradeInput = null
       } catch (error) {
