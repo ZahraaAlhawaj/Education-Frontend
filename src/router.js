@@ -42,6 +42,7 @@ const routes = [
   { path: '/studentReport', component: StudentReport },
 
   {
+
     path: '/registerStudent',
     component: RegisterStudent,
     name: 'RegisterStudent'
