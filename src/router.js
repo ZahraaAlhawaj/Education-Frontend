@@ -17,6 +17,7 @@ import studentSubmitions from './components/faculty/ViewStudentsSubmitions.vue'
 import ViewStudentSubmition from './components/faculty/ViewStudentSubmition.vue'
 import AddFacultyForm from './components/admin/AddFacultyForm.vue'
 
+import SignOut from './components/signout.vue'
 // ADD YOUR PATHS HERE
 const routes = [
   { path: '/', component: HomePage, name: 'HomePage' },
@@ -55,7 +56,8 @@ const routes = [
     path: '/addfacultyform',
     component: AddFacultyForm,
     name: 'AddFacultyForm'
-  }
+  },
+  { path: '/signOut', component: SignOut, name: 'SignOut' }
 ]
 
 const router = createRouter({

@@ -9,11 +9,11 @@ courseWork,
   },
   data: () => ({
     courses: [],
-    facultyId: "65f0265d9b596775d3720a6e",
+    facultyId: localStorage.getItem("userId"),
     selectedCodeId: null
   }),
   mounted() {
-    this.getFacultyMemberCourses("65f0265d9b596775d3720a6e")
+    this.getFacultyMemberCourses(localStorage.getItem("userId"))
   },
   methods: {
     async getFacultyMemberCourses(id) {

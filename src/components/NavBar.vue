@@ -1,29 +1,30 @@
 <script>
 export default {
-  name: 'NavBar',
+  name: "NavBar",
   data() {
     return {
-      userType: localStorage.getItem('userType') || null
+      userType: localStorage.getItem("userType") || null,
     }
   },
   watch: {
     userType(newType) {
-      console.log('User type changed:', newType)
-    }
+      console.log("User type changed:", newType)
+    },
   },
   mounted() {
-    window.addEventListener('storage', this.handleStorageChange)
+    window.addEventListener("storage", this.handleStorageChange)
+    
   },
   beforeDestroy() {
-    window.removeEventListener('storage', this.handleStorageChange)
+    window.removeEventListener("storage", this.handleStorageChange)
   },
   methods: {
     handleStorageChange(event) {
-      if (event.key === 'userType') {
+      if (event.key === "userType") {
         this.userType = event.newValue
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -40,6 +41,13 @@ export default {
       >
       <router-link to="/adminFaculty" name="AdminFaculty">Faculty</router-link>
 
+      <router-link to="/signIn">Sign In</router-link>
+    </section>
+    <section v-else-if="userType === 'faculty'">
+      <router-link to="/" name="HomePage">Home</router-link>
+      <router-link to="/signOut">Sign Out</router-link>
+    </section>
+    <section v-else>
       <router-link to="/signIn">Sign In</router-link>
     </section>
   </nav>
