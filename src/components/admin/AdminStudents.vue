@@ -11,6 +11,21 @@ export default {
   mounted: async function () {
     const response = await axios.get(`${BASE_URL}/student/`)
     this.students = response.data
+  },
+  methods: {
+    getStudentGPA(gpa) {
+      if (gpa <= 4 && gpa > 3) {
+        return 'A'
+      } else if (gpa < 3 && gpa > 2) {
+        return 'B'
+      } else if (gpa < 2 && gpa > 1) {
+        return 'C'
+      } else if (gpa < 1 && scgpaore > 0) {
+        return 'D'
+      } else {
+        return 'F'
+      }
+    }
   }
 }
 </script>
@@ -26,6 +41,8 @@ export default {
           <th class="text-left">Name</th>
           <th class="text-left">Email</th>
           <th class="text-left">GPA</th>
+          <th class="text-left">Grade</th>
+
           <!-- add plan name -->
         </tr>
       </thead>
@@ -34,6 +51,7 @@ export default {
           <td>{{ student.name }}</td>
           <td>{{ student.email }}</td>
           <td>{{ student.GPA }}</td>
+          <td>{{ getStudentGPA(student.GPA) }}</td>
         </tr>
       </tbody>
     </v-table>
