@@ -1,6 +1,10 @@
 <script>
+import Courses from '../components/faculty/courses.vue'
 export default {
-  name: 'HomePage'
+  name: 'HomePage',
+  components : {
+    Courses
+  }
 }
 </script>
 <template>
