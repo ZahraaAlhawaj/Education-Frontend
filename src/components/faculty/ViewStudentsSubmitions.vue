@@ -10,6 +10,7 @@ export default {
       courseWorkData: {},
       submitions: [],
       students: [],
+      searchQuery: "",
     }
   },
   mounted() {
@@ -51,42 +52,82 @@ export default {
       const url = `/ViewStudentSubmition/${id}/${stuName}/${AName}/${Ques}`
       window.location.href = url
     },
+    handleSearch() {
+      this.filteredSubmitions = this.submitions.filter((submission) => {
+        const studentNames = submission.studentId.map((student) => student.name)
+        return studentNames.some((name) =>
+          name.toLowerCase().includes(this.searchQuery.toLowerCase())
+        )
+      })
+    },
+  },
+  computed: {
+    filteredSubmitions() {
+      if (!this.searchQuery) return this.submitions
+      return this.submitions.filter((submission) => {
+        const studentNames = submission.studentId.map((student) => student.name)
+        return studentNames.some((name) =>
+          name.toLowerCase().includes(this.searchQuery.toLowerCase())
+        )
+      })
+    },
   },
 }
 </script>
 
 <template>
-  <h1>{{ courseWorkData.type }} - Student Submitions</h1>
-
-  <v-data-table>
-    <tr>
-      <th>Name</th>
-      <th>Grade Submission</th>
-      <th>Score</th>
-    </tr>
-
-    <tr v-for="sub in submitions" :key="sub._id">
-      <th v-if="sub.studentId && sub.studentId.length > 0">
-        {{ sub.studentId.map((student) => student.name).join(", ") }}
-      </th>
-      <th>
-        <button
-          @click="
-            goToStudentSubmition(
-              sub._id,
-              sub.studentId && sub.studentId.length > 0
-                ? sub.studentId.map((student) => student.name).join(', ')
-                : 'N/A',
-              courseWorkData.type,
-              sub.courseWorkId[0].question
-            )
-          "
-        >
-          View Submition
-        </button>
-      </th>
-      <th>{{ sub.grade }}/{{ courseWorkData.weight }}</th>
-    </tr>
-  </v-data-table>
+  <div>
+    <h1>{{ courseWorkData.type }} - Student Submissions</h1>
+    <input
+      placeholder="Search for Student.."
+      v-model="searchQuery"
+      @input="handleSearch"
+      class="custom-input"
+    />
+    <v-table>
+      <thead>
+        <tr>
+          <th class="text-left">Name</th>
+          <th class="text-left">Grade Submission</th>
+          <th class="text-left">Score</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="sub in filteredSubmitions" :key="sub._id">
+          <th v-if="sub.studentId && sub.studentId.length > 0">
+            {{ sub.studentId.map((student) => student.name).join(", ") }}
+          </th>
+          <th>
+            <v-btn
+              variant="tonal"
+              @click="
+                goToStudentSubmition(
+                  sub._id,
+                  sub.studentId && sub.studentId.length > 0
+                    ? sub.studentId.map((student) => student.name).join(', ')
+                    : 'N/A',
+                  courseWorkData.type,
+                  sub.courseWorkId[0].question
+                )
+              "
+            >
+              View Submission
+            </v-btn>
+          </th>
+          <th>{{ sub.grade }}/{{ courseWorkData.weight }}</th>
+        </tr>
+      </tbody>
+    </v-table>
+  </div>
 </template>
-<style></style>
+
+<style scoped>
+.custom-input {
+  /* Custom input styles */
+  border: 1px solid #ccc;
+    border-radius: 4px;
+  padding: 8px;
+  width: 15%;
+  box-sizing: border-box;
+}
+</style>

@@ -40,31 +40,53 @@ export default {
     },
     async updateGrade(subID) {
       try {
-        const res = await axios.put(`${API}/submition/${subID}`, {
+        await axios.put(`${API}/submition/${subID}`, {
           grade: this.gradeInput,
-          //update the report to include the submition id
         })
-        const getAllReports = await axios.get(`${API}/report`)
-        this.reports = getAllReports.data
-        console.log(this.reports)
-        // submissionDetails
-        // reports
-        for (let j = 0; j < this.submissionDetails.length; j++) {
-          for(let k=0; k< this.submissionDetails[j].studentId.length ; k++){
-          for (let i = 0; i < this.reports.length; i++) {
-           if(this.submissionDetails[j].studentId[k]._id === this.reports[i].student){
-            await axios.put(`${API}/report/${this.reports[i].student}`,{submittions :subID })
-            break
-           }
-          }
-          }
+
+        const allSubmissionsResponse = await axios.get(`${API}/submition`)
+        const allSubmissions = allSubmissionsResponse.data
+
+        const studentSubmissions = allSubmissions.filter((submission) =>
+          submission.studentId.some(
+            (id) => id === this.submissionDetails.studentId[0]._id
+          )
+        )
+
+        let totalGrade = 0
+        for (const submission of studentSubmissions) {
+          totalGrade += submission.grade || 0
         }
-        const ReportUpdated = await axios.put(`${API}/report/${subID}`)
+        const newGPA =
+          studentSubmissions.length > 0
+            ? totalGrade / studentSubmissions.length
+            : 0
+
+        const updatedGPA = Math.min(newGPA, 4)
+
+        await axios.put(
+          `${API}/student/${this.submissionDetails.studentId[0]._id}`,
+          {
+            GPA: updatedGPA,
+          }
+        )
+
+        await this.refreshReports()
+
         alert("Grade added")
 
         this.gradeInput = null
       } catch (error) {
         console.error("Error updating grade:", error)
+      }
+    },
+
+    async refreshReports() {
+      try {
+        const response = await axios.get(`${API}/report`)
+        this.reports = response.data
+      } catch (error) {
+        console.error("Error refreshing reports:", error)
       }
     },
   },

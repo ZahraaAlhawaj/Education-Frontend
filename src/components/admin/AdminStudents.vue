@@ -35,6 +35,7 @@ export default {
     <router-link to="/addstudentform" name="AddStudentForm"
       >Add a student</router-link
     >
+
     <v-table>
       <thead>
         <tr>
