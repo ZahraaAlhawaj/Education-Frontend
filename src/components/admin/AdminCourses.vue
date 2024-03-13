@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios'
+import { RouterLink } from 'vue-router'
 const BASE_URL = import.meta.env.VITE_UNIHUB_API
 export default {
   name: 'AdminCourses',
@@ -17,6 +18,9 @@ export default {
 <template>
   <section>
     <h1>All Courses Provided By UOGA</h1>
+    <router-link to="/addcourseform" name="AddCourseForm"
+      >Add a course</router-link
+    >
     <v-table>
       <thead>
         <tr>

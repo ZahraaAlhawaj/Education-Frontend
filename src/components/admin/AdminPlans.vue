@@ -18,6 +18,9 @@ export default {
 <template>
   <section>
     <h1>All Academic Programs Provided By UOGA</h1>
+    <router-link to="/addacademicplanform" name="AddAcademicPlanForm"
+      >Add an academic plan</router-link
+    >
     <v-table>
       <thead>
         <tr>
