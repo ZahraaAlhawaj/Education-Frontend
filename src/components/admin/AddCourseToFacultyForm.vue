@@ -35,7 +35,7 @@ export default {
         courseReq
       )
       console.log(response.data)
-      this.$router.push('/adminStudents')
+      this.$router.push(`/adminFaculty/${this.$route.params.faculty_id}`)
     }
   }
 }
