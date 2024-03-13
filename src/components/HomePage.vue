@@ -1,10 +1,21 @@
 <script>
+import Courses from "../components/faculty/courses.vue"
+
 export default {
-  name: 'HomePage'
+  name: "HomePage",
+  components: {
+    Courses,
+  },
+  data() {
+    return {
+      userType: "",
+    }
+  },
+  mounted() {
+    this.userType = localStorage.getItem("userType")
+  },
 }
 </script>
 <template>
-  <section>
-    <h1>Home Page</h1>
-  </section>
+  <Courses v-if="userType === 'faculty'" />
 </template>
