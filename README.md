@@ -47,7 +47,7 @@ Click the following link to be redirected to the live version of the code. [UniH
 
 ## 👍 Contact
 
-- [GitHub](https://github.com/ZahraaAlhawaj)
+- Zahraa - [GitHub](https://github.com/ZahraaAlhawaj)
 - Yasmeen - [GitHub](https://github.com/yomalbalooshi)
 - Fatima - [GitHub](https://github.com/fsky99)
 
