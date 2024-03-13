@@ -39,9 +39,9 @@ const routes = [
   { path: '/registerCourse', component: RegisterCourse },
   { path: '/courseDetails/:course_id', component: CourseDetails },
   { path: '/courseWorkDetails/:courseWork_id', component: CourseWorkDetails },
-  { path: '/studentReport', component: StudentReport }
+  { path: '/studentReport', component: StudentReport },
 
-{
+  {
     path: '/registerStudent',
     component: RegisterStudent,
     name: 'RegisterStudent'
@@ -97,20 +97,19 @@ const routes = [
     component: AddCourseToFacultyForm,
     name: 'AddCourseToFacultyForm`'
   },
-  { path: "/course/:id", component: courseWork, name: "courseWork" },
-{ path: "/:id", component: NewAssignment, name: "newAssignment" },
-{
-  path: "/studentSubmitions/:id",
-  component: studentSubmitions,
-  name: "studentSubmitions",
-},
-{
-path:"/ViewStudentSubmition/:id/:StuName/:AName/:Ques",
-component : ViewStudentSubmition,
-name:"ViewStudentSubmition",
-},
-{ path: '/signOut', component: SignOut, name: 'SignOut' },
-
+  { path: '/course/:id', component: courseWork, name: 'courseWork' },
+  { path: '/:id', component: NewAssignment, name: 'newAssignment' },
+  {
+    path: '/studentSubmitions/:id',
+    component: studentSubmitions,
+    name: 'studentSubmitions'
+  },
+  {
+    path: '/ViewStudentSubmition/:id/:StuName/:AName/:Ques',
+    component: ViewStudentSubmition,
+    name: 'ViewStudentSubmition'
+  },
+  { path: '/signOut', component: SignOut, name: 'SignOut' }
 ]
 
 const router = createRouter({
