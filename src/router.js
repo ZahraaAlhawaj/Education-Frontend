@@ -11,6 +11,7 @@ import courseWork from "./components/faculty/courseWork.vue"
 import NewAssignment from "./components/faculty/NewAssignment.vue"
 import studentSubmitions from "./components/faculty/ViewStudentsSubmitions.vue"
 import ViewStudentSubmition from "./components/faculty/ViewStudentSubmition.vue"
+import SignOut from './components/signout.vue'
 // ADD YOUR PATHS HERE
 const routes = [
 
@@ -53,7 +54,9 @@ const routes = [
   path:"/ViewStudentSubmition/:id/:StuName/:AName/:Ques",
   component : ViewStudentSubmition,
   name:"ViewStudentSubmition",
-}
+},
+{ path: '/signOut', component: SignOut, name: 'SignOut' },
+
 ]
 
 const router = createRouter({

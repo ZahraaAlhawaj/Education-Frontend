@@ -35,6 +35,7 @@ export default {
       )
       this.email = ''
       this.password = ''
+      window.location.href ='/'
     }
   }
 }
