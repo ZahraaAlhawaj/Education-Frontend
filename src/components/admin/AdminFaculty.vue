@@ -17,6 +17,9 @@ export default {
 <template>
   <section>
     <h1>UOGA Faculty</h1>
+    <router-link to="/addfacultyform" name="AddFacultyForm"
+      >Add a faculty member</router-link
+    >
     <v-table>
       <thead>
         <tr>

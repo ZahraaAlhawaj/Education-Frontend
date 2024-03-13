@@ -15,6 +15,7 @@ import courseWork from './components/faculty/courseWork.vue'
 import NewAssignment from './components/faculty/NewAssignment.vue'
 import studentSubmitions from './components/faculty/ViewStudentsSubmitions.vue'
 import ViewStudentSubmition from './components/faculty/ViewStudentSubmition.vue'
+import AddFacultyForm from './components/admin/AddFacultyForm.vue'
 
 // ADD YOUR PATHS HERE
 const routes = [
@@ -49,6 +50,11 @@ const routes = [
     path: '/addcourseform',
     component: AddCourseForm,
     name: 'AddCourseForm'
+  },
+  {
+    path: '/addfacultyform',
+    component: AddFacultyForm,
+    name: 'AddFacultyForm'
   }
 ]
 
